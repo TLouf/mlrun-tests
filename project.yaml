@@ -4,10 +4,9 @@ metadata:
 spec:
   description: my new project
   functions:
-  - url: ../src/queue_manager/queue_manager.py
+  - url: ./src/queue_manager/queue_manager.py
     name: queue-manager
     kind: nuclio
-    image: mlrun/mlrun
   workflows: []
   artifacts: []
   conda: ''
