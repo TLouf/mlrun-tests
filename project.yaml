@@ -1,0 +1,19 @@
+kind: project
+metadata:
+  name: myproj-test
+spec:
+  description: my new project
+  functions:
+  - url: ../src/queue_manager/queue_manager.py
+    name: queue-manager
+    kind: nuclio
+    image: mlrun/mlrun
+  workflows: []
+  artifacts: []
+  conda: ''
+  source: ''
+  desired_state: online
+  build:
+    commands: []
+    requirements: []
+  custom_packagers: []

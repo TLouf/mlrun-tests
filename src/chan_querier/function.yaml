@@ -1,0 +1,58 @@
+apiVersion: "nuclio.io/v1"
+kind: nuclio
+metadata:
+  name: chan-querier
+  # labels:
+    # nuclio.io/project-name: default
+  # resourceVersion: "1018129"
+spec:
+  handler: "src.chan_querier:handler"
+  runtime: "python:3.9"
+  resources:
+    requests:
+      cpu: 25m
+      memory: 1Mi
+  # imageHash: "1699001963374902384"
+  build:
+    path: src/chan_querier.py
+    requirements:
+    - requirements.txt
+  triggers:
+    default-http:
+      class: ""
+      kind: http
+      name: default-http
+      maxWorkers: 1
+      attributes:
+        serviceType: ClusterIP
+    kafka-trigger:
+      class: ""
+      kind: kafka-cluster
+      name: kafka-trigger
+      maxWorkers: 1
+      explicitAckMode: disable
+      workerTerminationTimeout: 5s
+      attributes:
+        brokers:
+          - 'my-cluster-kafka-brokers.kafka:9092'
+        consumerGroup: group3
+        fetchDefault: 1048576
+        heartbeatInterval: 3s
+        initialOffset: latest
+        maxWaitHandlerDuringRebalance: 5s
+        rebalanceTimeout: 60s
+        sasl:
+          enable: false
+          password: ""
+          user: ""
+        sessionTimeout: 10s
+        topics:
+          - channels
+        workerAllocationMode: pool
+  version: 1
+  alias: latest
+  loggerSinks:
+    - level: debug
+  platform: {}
+  securityContext: {}
+  eventTimeout: ""
