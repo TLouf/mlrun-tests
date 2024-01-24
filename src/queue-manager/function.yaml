@@ -29,7 +29,7 @@ spec:
     requests:
       cpu: 25m
       memory: 1Mi
-  # image: mlrun/mlrun
+  image: mlrun/mlrun
   # imageHash: "1699258902072704849"
   triggers:
     default-http:
