@@ -1,0 +1,25 @@
+apiVersion: v1
+categories: []
+description: ''
+doc: ''
+example: ''
+generationDate: 2024-01-25:13-30
+icon: ''
+labels:
+  nuclio.io/project-name: default
+maintainers: []
+marketplaceType: ''
+mlrunVersion: ''
+name: youtubecomments
+platformVersion: ''
+spec:
+  filename: youtube-comments.py
+  handler: handler
+  image: ''
+  kind: ''
+  requirements:
+  - kafka-python
+  - minio
+  - google-api-python-client
+url: ''
+version: 0.0.1

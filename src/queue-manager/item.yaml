@@ -1,0 +1,36 @@
+apiVersion: v1
+version: 0.0.1
+name: queue-manager
+spec:
+  filename: queue_manager.py
+  handler: handler
+  image: mlrun/mlrun
+  # disable: true
+  # env:
+  #   - name: MINIO_HOME
+  #     valueFrom:
+  #       secretKeyRef:
+  #         name: miniocredentials
+  #         key: miniohome
+  #   - name: MINIO_ACCESS_KEY
+  #     valueFrom:
+  #       secretKeyRef:
+  #         name: miniocredentials
+  #         key: accesskey
+  #   - name: MINIO_SECRET_KEY
+  #     valueFrom:
+  #       secretKeyRef:
+  #         name: miniocredentials
+  #         key: secretkey
+  resources:
+    requests:
+      cpu: 25m
+      memory: 1Mi
+  triggers:
+    default-http:
+      class: ""
+      kind: http
+      name: default-http
+      maxWorkers: 1
+      attributes:
+        serviceType: ClusterIP
