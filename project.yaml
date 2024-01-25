@@ -4,9 +4,8 @@ metadata:
 spec:
   description: my new project
   functions:
-  - url: ./src/queue-manager/queue_manager.py
+  - url: ./src/queue-manager/function.yaml
     name: queue-manager
-    kind: nuclio
   workflows: []
   artifacts: []
   conda: ''
