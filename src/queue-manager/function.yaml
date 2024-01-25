@@ -6,10 +6,9 @@ metadata:
     # nuclio.io/project-name: default
   resourceVersion: "953980"
 spec:
-  # disable: true
   filename: queue_manager.py
   handler: handler
-  # image: mlrun/mlrun
+  image: mlrun/mlrun
   runtime: "python:3.9"
   # env:
   #   - name: MINIO_HOME
